@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String strVideoPath = Environment.getExternalStorageDirectory() + "/ahsbwg.mp4";
+        String strVideoPath = Environment.getExternalStorageDirectory() + "/ahbwy.mp4";
         uri = Uri.parse(strVideoPath);
         videoView = findViewById(R.id.video);
         final View imageView = findViewById(R.id.image);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 videoView.start();
-                handler.postDelayed(runnable, 88000);
+                handler.postDelayed(runnable, 73000);
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         imageView.setVisibility(View.GONE);
