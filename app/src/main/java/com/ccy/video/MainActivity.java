@@ -22,12 +22,14 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     private VideoView videoView;
     private Uri uri;
+    private int time;
+    private String video_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String strVideoPath = Environment.getExternalStorageDirectory() + "/ahbwy.mp4";
+        String strVideoPath = Environment.getExternalStorageDirectory() + "/hbsbwg.mp4";
         uri = Uri.parse(strVideoPath);
         videoView = findViewById(R.id.video);
         final View imageView = findViewById(R.id.image);
@@ -61,7 +63,13 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 videoView.start();
-                handler.postDelayed(runnable, 73000);
+                time=videoView.getDuration();
+                if(time!=0) {
+                    time = time / 1000;
+                    handler.postDelayed(runnable, time - 1);
+                }else {
+                    Toast.makeText(MainActivity.this,"对不起，不能循环播放，请退出重新打开",Toast.LENGTH_LONG).show();
+                }
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         imageView.setVisibility(View.GONE);
